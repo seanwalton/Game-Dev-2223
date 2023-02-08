@@ -10,6 +10,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private Rigidbody2D rb2D;
     private Vector2 velocity = new Vector2();
+    private float currentSpeed = 0f;
 
     private void Awake()
     {
@@ -21,15 +22,19 @@ public class PlayerMovementController : MonoBehaviour
 
         velocity = rb2D.velocity;
 
+        currentSpeed = 0f;
+
         if (Input.GetKey(KeyCode.D))
         {
-            velocity.x = walkSpeed;
+            currentSpeed += walkSpeed;
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            velocity.x = -1f*walkSpeed;
+            currentSpeed += -1f*walkSpeed;
         }
+
+        velocity.x = currentSpeed;
 
         rb2D.velocity = velocity;
     }
