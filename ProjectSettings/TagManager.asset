@@ -8,11 +8,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Friendlies
   - Water
   - UI
-  - 
-  - 
+  - Hostiles
+  - Obstacles
   - 
   - 
   - 
