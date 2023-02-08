@@ -12,6 +12,7 @@ public class PlayerMovementController : MonoBehaviour
     private Rigidbody2D rb2D;
     private Vector2 velocity = new Vector2();
     private float currentSpeed = 0f;
+    private bool onGround = false;
 
     private void Awake()
     {
@@ -24,9 +25,9 @@ public class PlayerMovementController : MonoBehaviour
         CheckJump();
     }
 
-    public void OnGroundedChange(bool onGround)
+    public void OnGroundedChange(bool _onGround)
     {
-        Debug.Log("On Ground = " + onGround.ToString());
+        onGround = _onGround;
     }
 
     private void CheckJump()
@@ -34,7 +35,7 @@ public class PlayerMovementController : MonoBehaviour
         velocity = rb2D.velocity;
         if (Input.GetKeyDown(KeyCode.W))
         {
-            velocity.y = jumpSpeed;
+            if (onGround) velocity.y = jumpSpeed;
         }
         rb2D.velocity = velocity;
     }
