@@ -58,4 +58,21 @@ public class PlayerMovementController : MonoBehaviour
         velocity.x = currentSpeed;
         rb2D.velocity = velocity;
     }
+
+    public void ExitState(PlayerState oldState)
+    {
+        if (oldState == PlayerState.PLATFORMER)
+        {
+            Debug.Log("Exit platformer");
+        }
+    }
+
+    public void EnterState(PlayerState newState)
+    {
+        if (newState == PlayerState.PLATFORMER)
+        {
+            Debug.Log("Enter platformer");
+        }
+    }
+
 }
