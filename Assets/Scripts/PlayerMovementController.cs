@@ -13,6 +13,8 @@ public class PlayerMovementController : MonoBehaviour
     private Vector2 velocity = new Vector2();
     private float currentSpeed = 0f;
     private bool onGround = false;
+    private bool activeState = false;
+    private float rotation;
 
     private void Awake()
     {
@@ -21,6 +23,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Update()
     {
+        if (!activeState) return;
         CheckRunSpeed();
         CheckJump();
     }
@@ -64,6 +67,8 @@ public class PlayerMovementController : MonoBehaviour
         if (oldState == PlayerState.PLATFORMER)
         {
             Debug.Log("Exit platformer");
+            rotation = rb2D.rotation;
+            activeState = false;
         }
     }
 
@@ -72,6 +77,10 @@ public class PlayerMovementController : MonoBehaviour
         if (newState == PlayerState.PLATFORMER)
         {
             Debug.Log("Enter platformer");
+            rb2D.SetRotation(rotation);
+            activeState = true;
+            rb2D.gravityScale = 1f;
+            rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
     }
 

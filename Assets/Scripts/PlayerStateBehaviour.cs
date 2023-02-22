@@ -22,7 +22,7 @@ public class PlayerStateBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             switch (currentState)
             {
