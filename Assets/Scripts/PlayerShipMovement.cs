@@ -5,13 +5,13 @@ using UnityEngine;
 public class PlayerShipMovement : MonoBehaviour
 {
     [SerializeField] private float rotationSpeed;
-    [SerializeField] private float shipSpeed;
+    [SerializeField] private float engineForce;
 
     private bool activeState = false;
 
     private Rigidbody2D rb2D;
     private Transform tr;
-    private Vector2 newVelocity;
+    private Vector2 newForce;
 
     private void Awake()
     {
@@ -25,16 +25,22 @@ public class PlayerShipMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.D))
         {
-            rb2D.rotation += rotationSpeed*Time.deltaTime;
+            rb2D.rotation -= rotationSpeed*Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            rb2D.rotation -= rotationSpeed * Time.deltaTime;
+            rb2D.rotation += rotationSpeed * Time.deltaTime;
         }
 
-        newVelocity = shipSpeed * tr.up;
-        rb2D.velocity = newVelocity;
+        if (Input.GetKey(KeyCode.W))
+        {
+            newForce = engineForce * tr.up;
+            rb2D.AddForce(newForce);
+        }
+
+        
+        
     }
 
     public void ExitState(PlayerState oldState)
