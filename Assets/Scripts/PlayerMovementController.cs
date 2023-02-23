@@ -15,6 +15,8 @@ public class PlayerMovementController : MonoBehaviour
     private bool onGround = false;
     private bool activeState = false;
     private float rotation;
+    private List<MovingPlatformBehaviour> movingPlatforms 
+        = new List<MovingPlatformBehaviour>();
 
     private void Awake()
     {
@@ -26,6 +28,16 @@ public class PlayerMovementController : MonoBehaviour
         if (!activeState) return;
         CheckRunSpeed();
         CheckJump();
+    }
+
+    public void LandedOnMovingPlatform(MovingPlatformBehaviour moving)
+    {
+        if (!movingPlatforms.Contains(moving)) movingPlatforms.Add(moving);
+    }
+
+    public void LeftMovingPlatform(MovingPlatformBehaviour moving)
+    {
+        if (movingPlatforms.Contains(moving)) movingPlatforms.Remove(moving);
     }
 
     public void OnGroundedChange(bool _onGround)
@@ -59,6 +71,13 @@ public class PlayerMovementController : MonoBehaviour
         }
 
         velocity.x = currentSpeed;
+
+        foreach (var item in movingPlatforms)
+        {
+            velocity.x += item.Velocity.x;
+            velocity.y += item.Velocity.y;
+        }
+
         rb2D.velocity = velocity;
     }
 

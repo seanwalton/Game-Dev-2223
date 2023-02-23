@@ -9,6 +9,8 @@ public class MovingPlatformBehaviour : MonoBehaviour
 
     private Rigidbody2D rb2D;
 
+    public Vector2 Velocity => velocity;
+
     private void Awake()
     {
         rb2D = GetComponent<Rigidbody2D>();
