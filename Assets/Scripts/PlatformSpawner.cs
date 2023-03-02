@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlatformSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject platformPrefab;
-    [SerializeField] private float spawnDelay;
     private Transform tr;
 
     private void Awake()
@@ -13,12 +12,9 @@ public class PlatformSpawner : MonoBehaviour
         tr = transform;
     }
 
-    private void Start()
-    {
-        InvokeRepeating("SpawnPlatform", 0f, spawnDelay);
-    }
+  
 
-    private void SpawnPlatform()
+    public void SpawnPlatform()
     {
         Instantiate(platformPrefab, tr.position, tr.rotation);
     }
