@@ -18,6 +18,11 @@ public class MovingPlatformBehaviour : MonoBehaviour
 
     private void Start()
     {
+        OnRemoveFromPool();
+    }
+
+    public void OnRemoveFromPool()
+    {
         rb2D.velocity = velocity;
     }
 }
