@@ -9,9 +9,31 @@ public class AchievementData : ScriptableObject
     [SerializeField] private string achievementID;
     [SerializeField] private string achievementDescription;
 
-    public void Unlock()
+    private IAchievementService achievementService;
+
+    private bool unlocked = false;
+
+    public bool Unlocked => unlocked;
+
+    public void SetAchievementService(IAchievementService _achievementService)
     {
-        throw new System.NotImplementedException();
+        achievementService = _achievementService;
+        Debug.Log(achievementService);
+    }
+
+    public bool Unlock()
+    {
+
+        bool wasUnlocked = unlocked;
+
+        if (achievementService != null)
+        {
+            wasUnlocked = achievementService.UnlockAchievement(this);
+        }
+
+        unlocked = true;
+
+        return wasUnlocked;
     }
 
 }
