@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3259280305532172923}
   - component: {fileID: 7070192963057321320}
   - component: {fileID: 7781492799505310397}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Kill Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
