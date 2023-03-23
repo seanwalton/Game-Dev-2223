@@ -239,8 +239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc3a63b8aa78c2049828345ff19ceeb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 5
-  jumpSpeed: 8
+  walkSpeed: 10
+  jumpSpeed: 10
 --- !u!60 &2230693196194796970
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -300,8 +300,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b33e3f5e51520764e98fdbc766aa286b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 200
-  engineForce: 10
+  rotationSpeed: 400
+  engineForce: 20
 --- !u!114 &8085204669650904670
 MonoBehaviour:
   m_ObjectHideFlags: 0
